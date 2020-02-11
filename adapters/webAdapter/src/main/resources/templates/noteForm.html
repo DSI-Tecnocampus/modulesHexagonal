@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css"
+          th:href="@{style.css}"/>
+    <title>New note</title>
+</head>
+<body>
+
+<div align="center">
+<h1> <span th:text="'Create note for ' +  ${user}"/></h1>
+
+<form method="POST" th:object="${noteLab}" >
+    <div align = "left" class="errors" th:if="${#fields.hasErrors('*')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}"
+                th:text="${err}">Input is incorrect</li>
+        </ul>
+    </div>
+
+    <table>
+    <tr>
+        <td><label th:class="${#fields.hasErrors('title')}? 'error'">Title</label>:</td>
+        <td><input type="text" th:field="*{title}" style="font-size: 12pt;width: 200px;"
+               th:class="${#fields.hasErrors('title')}? 'error'"/><br/></td>
+    </tr>
+    <tr>
+        <td valign = "top"><label>Content: </label></td>
+        <td><textarea type="text" th:field="*{content}" cols= "25" rows = "10" style="font-size:12pt;"/><br/></td>
+    </tr>
+
+    <tr>
+    <td><input type="submit" style="font-size: 12pt;" value="Create Note"/></td>
+    </tr>
+    </table>
+</form>
+
+</div>
+</body>
+</html>

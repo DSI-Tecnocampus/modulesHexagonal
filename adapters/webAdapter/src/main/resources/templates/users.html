@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Users</title>
+    <link rel="stylesheet" type="text/css" href="table.css"/>
+</head>
+<body>
+<h1>List of all Users</h1>
+<h2>As HTML list</h2>
+<ul>
+    <li th:each="userLab : ${userLabList}"
+        th:id="'user_' + ${userLab.username}">
+        <div><span><b>Username: </b></span><span th:text="${userLab.username}">Name</span></div>
+        <div><span><b>Name: </b></span><span th:text="'Name: ' + ${userLab.name}  + ' ' + ${userLab.secondName}">Name Second Name</span></div>
+        <div><span><b>Email: </b></span><span th:text="'Email: ' + ${userLab.email}">email</span></div>
+    </li>
+</ul>
+
+<h2>As HTML table</h2>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tr th:each="userLab : ${userLabList}">
+        <td th:text="${userLab.username}">Username</td>
+        <td th:text="${userLab.name} + ' ' +${userLab.secondName}">Name SecondName</td>
+        <td th:text="${userLab.email}">Email</td>
+    </tr>
+</table>
+</body>
+</html>

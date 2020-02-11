@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" th:href="@{style.css}"/>
+    <title>Create User</title>
+</head>
+<body>
+
+<div align="center">
+
+<h1>Register User</h1>
+
+<form method="POST" th:object="${userLab}">
+    <div align = "left" class="errors" th:if="${#fields.hasErrors('*')}">
+        <ul>
+            <li th:each="err : ${#fields.errors('*')}"
+                th:text="${err}">Input is incorrect</li>
+        </ul>
+    </div>
+
+    <table>
+        <tr>
+            <td><label th:class="${#fields.hasErrors('name')}? 'error'">First Name</label>:</td>
+            <td><input type="text" th:field="*{name}"
+                       th:class="${#fields.hasErrors('name')}? 'error'" /></td>
+        </tr>
+        <tr>
+            <td><label th:class="${#fields.hasErrors('secondName')}? 'error'">Last Name</label>:</td>
+            <td><input type="text" th:field="*{secondName}"
+                       th:class="${#fields.hasErrors('secondName')}? 'error'"/></td>
+        </tr>
+        <tr>
+            <td><label th:class="${#fields.hasErrors('email')}? 'error'">Email</label>:</td>
+            <td><input type="text" th:field="*{email}"
+                       th:class="${#fields.hasErrors('email')}? 'error'"/></td>
+        </tr>
+        <tr>
+            <td><label th:class="${#fields.hasErrors('username')}? 'error'">Username</label>:</td>
+            <td><input type="text" th:field="*{username}"
+                       th:class="${#fields.hasErrors('username')}? 'error'"/></td>
+        </tr>
+        <tr>
+            <td><label th:class="${#fields.hasErrors('password')}? 'error'">Password</label>:</td>
+            <td><input type="password" th:field="*{password}"
+                       th:class="${#fields.hasErrors('password')}? 'error'"/></td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Create User" />
+
+
+</form>
+</div>
+</body>
+</html>

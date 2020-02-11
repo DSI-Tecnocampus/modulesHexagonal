@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../../table.css}"/>
+</head>
+<body>
+
+<h2>Request parameter: <span th:text="${requestParam}"></span></h2>
+
+<h1>Registered User: <span th:text="${registeredUserLab.name} + ' ' + ${registeredUserLab.secondName}"/></h1>
+<b>Email: <span th:text="${registeredUserLab.email}" /></b>
+
+<h2>Notes</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Creation date</th>
+        <th>Edition date</th>
+        <th>Contents</th>
+    </tr>
+    <tr th:each="noteLab : ${registeredUserLab.notesAsList}">
+        <td th:text="${noteLab.title}">Note title</td>
+        <td th:text="${noteLab.dateCreation}">Creation date</td>
+        <td th:text="${noteLab.dateEdit}">Edit date</td>
+        <td th:text="${noteLab.content}">Content</td>
+    </tr>
+</table>
+
+
+<h1>Flash attribute user: <span th:text="${newUser.name} + ' ' + ${newUser.secondName}"/></h1>
+<b>Email: <span th:text="${newUser.email}" /></b>
+<b>Username: <span th:text="${newUser.username}" /></b>
+
+</body>
+</html>

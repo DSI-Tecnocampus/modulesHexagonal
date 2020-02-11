@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" th:href="@{../table.css}"/>
+</head>
+<body>
+<h1><span th:text="${userLab.name} + ' ' + ${userLab.secondName}"/></h1>
+<b>Email: <span th:text="${userLab.email}" /></b>
+
+<h2>Notes</h2>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Creation date</th>
+        <th>Edition date</th>
+        <th>Contents</th>
+    </tr>
+    <tr th:each="noteLab : ${userLab.notesAsList}">
+        <td th:text="${noteLab.title}">Note title</td>
+        <td th:text="${noteLab.dateCreation}">Creation date</td>
+        <td th:text="${noteLab.dateEdit}">Edit date</td>
+        <td th:text="${noteLab.content}">Content</td>
+    </tr>
+</table>
+</body>
+</html>
